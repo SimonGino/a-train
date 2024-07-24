@@ -16,16 +16,16 @@ static ALLOC: jemallocator::Jemalloc = jemallocator::Jemalloc;
 #[clap(name = "A-Train", version = version())]
 struct Opt {
     /// Path to the configuration file
-    #[clap(short, long, value_name = "FILE", default_value = "a-train.toml")]
+    #[arg(short, long, value_name = "FILE", default_value = "a-train.toml")]
     config: String,
 
     /// Path to the database file
-    #[clap(long, alias = "db", value_name = "FILE", default_value = "a-train.db")]
+    #[arg(long, alias = "db", value_name = "FILE", default_value = "a-train.db")]
     database: String,
 
-    /// Proxy URL to use for debugging
-    #[clap(short, long, value_name = "URL")]
-    proxy: Option<String>,
+    /// URL of the remote server
+    #[arg(short, long, value_name = "URL")]
+    server: Option<String>,
 }
 
 fn version() -> &'static str {
@@ -49,7 +49,7 @@ async fn main() -> eyre::Result<()> {
     let config = Config::new(&opt.config)?;
 
     let mut a_train = a_train::AtrainBuilder::new(config, &opt.database)?;
-    if let Some(url) = opt.proxy {
+    if let Some(url) = opt.server {
         a_train = a_train.proxy(url);
     }
 

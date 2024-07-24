@@ -24,7 +24,7 @@ impl Atrain {
                     return Err(err.into());
                 }
 
-                warn!(%drive_id, "Encountered a Partial Change List.")
+                warn!(%drive_id, "Encountered a Partial Change List: {}", err);
             }
         }
 
