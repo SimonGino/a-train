@@ -16,15 +16,15 @@ static ALLOC: jemallocator::Jemalloc = jemallocator::Jemalloc;
 #[clap(name = "A-Train", version = version())]
 struct Opt {
     /// Path to the configuration file
-    #[arg(short, long, value_name = "FILE", default_value = "a-train.toml")]
+    #[clap(short, long, value_name = "FILE", default_value = "a-train.toml")]
     config: String,
 
     /// Path to the database file
-    #[arg(long, alias = "db", value_name = "FILE", default_value = "a-train.db")]
+    #[clap(long, alias = "db", value_name = "FILE", default_value = "a-train.db")]
     database: String,
 
     /// URL of the remote server
-    #[arg(short, long, value_name = "URL")]
+    #[clap(short, long, value_name = "URL")]
     server: Option<String>,
 }
 

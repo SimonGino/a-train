@@ -14,7 +14,7 @@ anyhow = "1"
 async-trait = "0.1.51"
 bernard = { git = "https://github.com/m-rots/bernard-rs", branch = "main" }
 chrono = "0.4"
-clap = "3.0.0-beta.5"
+clap = { version = "3.2", features = ["derive"] }
 color-eyre = "0.5.11"
 eyre = "0.6.5"
 futures = "0.3"
