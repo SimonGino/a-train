@@ -1,7 +1,7 @@
 use crate::{autoscan::create_payload, Atrain, Result};
 use bernard::SyncKind;
 use futures::prelude::*;
-use tracing::warn;
+use tracing::{info, warn};
 
 const CONCURRENCY: usize = 5;
 
@@ -15,7 +15,10 @@ impl Atrain {
                 let payload = create_payload(changed_paths);
 
                 if !payload.is_empty() {
-                    self.autoscan.send_payload(drive_id, &payload).await?;
+                    info!(%drive_id, "Sending payload to Autoscan: {:?}", payload);
+                    let result = self.autoscan.send_payload(drive_id, &payload).await;
+                    info!(%drive_id, "Result of send_payload: {:?}", result);
+                    result?;
                 }
             }
             Err(err) => {
