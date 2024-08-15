@@ -27,11 +27,11 @@ jobs:
       - name: Check out code
         uses: actions/checkout@v2
 
-      # With each cache weighing in at ~500MB per target,
-      # and this repository maxing out at 5GB of caches,
-      # it might make sense not to cache dependencies.
-      - name: Cache dependencies
-        uses: Swatinem/rust-cache@v1
+#      # With each cache weighing in at ~500MB per target,
+#      # and this repository maxing out at 5GB of caches,
+#      # it might make sense not to cache dependencies.
+#      - name: Cache dependencies
+#        uses: Swatinem/rust-cache@v1
 
       - name: Install Rust Cross
         run: cargo install cross
