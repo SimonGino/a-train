@@ -33,6 +33,11 @@ jobs:
       - name: Cache dependencies
         uses: Swatinem/rust-cache@v1
 
+      - name: Install glibc
+        uses: actions/setup-glibc@v2
+        with:
+          version: 2.29  # 或者您需要的其他版本
+
       - name: Install Rust Cross
         run: cargo install cross
 
