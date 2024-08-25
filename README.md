@@ -36,7 +36,7 @@ docker run -d \
     --name a-train \
     --volume /path/to/data:/data \
     --restart unless-stopped \
-    ghcr.io/m-rots/a-train
+    ghcr.io/simongino/a-train
 ```
 
 ### From Source
@@ -44,7 +44,7 @@ docker run -d \
 Requires the latest stable version of [Rust](https://www.rust-lang.org/tools/install) to be installed.
 
 ```bash
-cargo install --git https://github.com/m-rots/a-train --branch main
+cargo install --git https://github.com/simongino/a-train --branch main
 ```
 
 ## Configuration
