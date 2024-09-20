@@ -27,8 +27,13 @@ impl Atrain {
                     return Err(err.into());
                 }
 
-                warn!(%drive_id, "Encountered a Partial Change List.")
-            }
+                warn!(
+                    %drive_id,
+                    error = %err,
+                    "Encountered a Partial Change List error. Drive ID: {}, Error details: {}. This may be due to network issues or Google Drive API limitations.",
+                    drive_id,
+                    err
+                );            }
         }
 
         Ok(())
