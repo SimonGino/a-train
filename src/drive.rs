@@ -33,7 +33,8 @@ impl Atrain {
                     "Encountered a Partial Change List error. Drive ID: {}, Error details: {}. This may be due to network issues or Google Drive API limitations.",
                     drive_id,
                     err
-                );            }
+                )
+            }
         }
 
         Ok(())
