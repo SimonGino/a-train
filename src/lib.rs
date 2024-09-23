@@ -8,6 +8,7 @@ mod config;
 mod drive;
 
 pub use config::Config;
+use crate::config::TelegramConfig;
 
 #[derive(Debug, Error)]
 pub enum Error {
@@ -19,6 +20,10 @@ pub enum Error {
     Unexpected(#[from] eyre::Report),
     #[error("Invalid configuration")]
     Configuration(#[from] config::ConfigError),
+    #[error("Telegram error: {0}")]
+    Telegram(String),
+    #[error("Other error: {0}")]
+    Other(String),
 }
 
 pub type Result<T> = std::result::Result<T, Error>;
@@ -27,6 +32,7 @@ pub struct Atrain {
     autoscan: Autoscan,
     bernard: Bernard,
     drives: Vec<String>,
+    telegram_config: Option<TelegramConfig>,
 }
 
 impl Atrain {
@@ -43,6 +49,7 @@ pub struct AtrainBuilder {
     autoscan: AutoscanBuilder,
     bernard: BernardBuilder,
     drives: Vec<String>,
+    telegram_config: Option<TelegramConfig>,
 }
 
 impl AtrainBuilder {
@@ -52,7 +59,8 @@ impl AtrainBuilder {
         Ok(Self {
             autoscan: Autoscan::builder(config.autoscan.url, config.autoscan.authentication),
             bernard: Bernard::builder(database_path, account),
-            drives: config.drive.drives,
+            drives: config.drive.drives,            
+            telegram_config: config.telegram,
         })
     }
 
@@ -67,6 +75,7 @@ impl AtrainBuilder {
             autoscan: self.autoscan.build(),
             bernard: self.bernard.build().await.unwrap(),
             drives: self.drives,
+            telegram_config: self.telegram_config,
         };
 
         // Check whether Autoscan is available.

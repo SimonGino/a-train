@@ -14,7 +14,8 @@ pub enum ConfigError {
 #[derive(Debug, Deserialize)]
 pub struct Config {
     pub(crate) autoscan: AutoscanConfig,
-    pub(crate) drive: DriveConfig,
+    pub(crate) drive: DriveConfig,   
+    pub telegram: Option<TelegramConfig>,
 }
 
 #[derive(Debug, Deserialize)]
@@ -28,6 +29,12 @@ pub(crate) struct AutoscanConfig {
 pub(crate) struct DriveConfig {
     pub(crate) account: PathBuf,
     pub(crate) drives: Vec<String>,
+}
+
+#[derive(Debug, Deserialize)]
+pub struct TelegramConfig {
+    pub bot_token: String,
+    pub chat_id: String,
 }
 
 impl Config {

@@ -68,6 +68,10 @@ password = "general kenobi"
 account = "./account.json"
 # One or more Shared Drive IDs
 drives = ["0A1xxxxxxxxxUk9PVA", "0A2xxxxxxxxxUk9PVA"]
+
+[telegram]
+bot_token = "77xxxxx437:AAE2DBsxxxxxxxxxlnYuOTYrflM"
+chat_id = "109xxxx198"
 ```
 
 ### How to get the ID of a Shared Drive?
