@@ -186,7 +186,7 @@ checksum = "904dfeac50f3cdaba28fc6f57fdcddb75f49ed61346676a78c4ffe55877802fd"
 [[package]]
 name = "bernard"
 version = "0.1.0"
-source = "git+https://github.com/SimonGino/bernard-rs?branch=main#eba9837a5c136bc676fd0067b82aa3a5822dd7be"
+source = "git+https://github.com/SimonGino/bernard-rs?branch=main#a0c67b3e80aaffe175e85759ca5a2ee0962690b8"
 dependencies = [
  "backoff",
  "chrono",
